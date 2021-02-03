@@ -16,8 +16,17 @@ class Timer {
         clearInterval(this.interval)
     }
     tick = () => {
-        const timeRemaining = parseFloat(this.duration.value); //set the the default value set in index.html
-        this.duration.value = timeRemaining - 1
+        this.timeRemaining = this.timeRemaining - 1
+        //below has been encapsulated into getters and setters
+        // const timeRemaining = parseFloat(this.duration.value); //set the the default value set in index.html
+        // this.duration.value = timeRemaining - 1
+    }
+
+    get timeRemaining() {
+        return parseFloat(this.duration.value);
+    }
+    set timeRemaining(time) {
+        this.duration.value = time;
     }
 }
 
