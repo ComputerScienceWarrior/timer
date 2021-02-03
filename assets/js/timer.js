@@ -21,7 +21,7 @@ class Timer {
             this.onStart();
         }
         this.tick(); //immediately run 1 tick upon starting.
-        this.interval = setInterval(this.tick, 1000); //declaring as 'this.interval' allows us to share the data among methods
+        this.interval = setInterval(this.tick, 50); //declaring as 'this.interval' allows us to share the data among methods
     }
     pause = () => {
         clearInterval(this.interval)
@@ -33,7 +33,7 @@ class Timer {
                 this.onComplete();
             }
         } else {
-            this.timeRemaining = this.timeRemaining - 1
+            this.timeRemaining = this.timeRemaining - .05 //.05 matches with interval time inside of start method
             if (this.onTick) {
                 this.onTick();
             }
@@ -48,7 +48,7 @@ class Timer {
         return parseFloat(this.duration.value);
     }
     set timeRemaining(time) {
-        this.duration.value = time;
+        this.duration.value = time.toFixed(2); //round time to 2 decimal places with 'toFixed' method
     }
 }
 
