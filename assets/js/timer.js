@@ -18,7 +18,7 @@ class Timer {
     start = () => {
         //if onStart is valid, call this.onStart() callback function
         if (this.onStart) {
-            this.onStart();
+            this.onStart(this.timeRemaining);
         }
         this.tick(); //immediately run 1 tick upon starting.
         this.interval = setInterval(this.tick, 50); //declaring as 'this.interval' allows us to share the data among methods
@@ -35,7 +35,7 @@ class Timer {
         } else {
             this.timeRemaining = this.timeRemaining - .05 //.05 matches with interval time inside of start method
             if (this.onTick) {
-                this.onTick();
+                this.onTick(this.timeRemaining);
             }
         }
 
